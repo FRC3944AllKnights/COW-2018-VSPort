@@ -7,6 +7,7 @@
 
 #include <IterativeRobot.h>
 #include <Joystick.h>
+#include "servoswitch.cpp"
 #include "Drive.h"
 
 /**
@@ -26,10 +27,12 @@ class Robot : public frc::IterativeRobot {
      * movement, and Z axis for rotation.
      */
     COWDrive.mechanum(m_stick.GetX(), m_stick.GetY(), m_stick.GetZ());
+    servoswitch.servoRotato(m_stick.GetTrigger);
   }
 
  private:
  //this is where to change variables
+  servoswitch servoswitch;
   static constexpr int kJoystickChannel = 0;
   Drive COWDrive;
   frc::Joystick m_stick{kJoystickChannel};
