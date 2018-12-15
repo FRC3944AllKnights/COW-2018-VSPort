@@ -4,6 +4,7 @@
 class Drive{
     public:
         Drive();
+        void init();
         void mechanum(double x, double y, double z);
 
     private:

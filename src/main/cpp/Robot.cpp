@@ -18,6 +18,7 @@ class Robot : public frc::IterativeRobot {
   void RobotInit() override {
     // Invert the left side motors. You may need to change or remove this to
     // match your robot.
+    COWDrive.init();
   }
 
   void TeleopPeriodic() override {
