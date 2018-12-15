@@ -8,7 +8,7 @@
 #include <Drive/MecanumDrive.h>
 #include <IterativeRobot.h>
 #include <Joystick.h>
-#include <Spark.h>
+#include <Talon.h>
 
 /**
  * This is a demo program showing how to use Mecanum control with the
@@ -21,6 +21,8 @@ class Robot : public frc::IterativeRobot {
     // match your robot.
     m_frontLeft.SetInverted(true);
     m_rearLeft.SetInverted(true);
+    m_frontRight.SetInverted(true);
+    m_rearRight.SetInverted(true);
   }
 
   void TeleopPeriodic() override {
@@ -31,6 +33,7 @@ class Robot : public frc::IterativeRobot {
   }
 
  private:
+ //this is where to change variables
   static constexpr int kFrontLeftChannel = 0;
   static constexpr int kRearLeftChannel = 1;
   static constexpr int kFrontRightChannel = 2;
@@ -38,10 +41,10 @@ class Robot : public frc::IterativeRobot {
 
   static constexpr int kJoystickChannel = 0;
 
-  frc::Spark m_frontLeft{kFrontLeftChannel};
-  frc::Spark m_rearLeft{kRearLeftChannel};
-  frc::Spark m_frontRight{kFrontRightChannel};
-  frc::Spark m_rearRight{kRearRightChannel};
+  frc::Talon m_frontLeft{kFrontLeftChannel};
+  frc::Talon m_rearLeft{kRearLeftChannel};
+  frc::Talon m_frontRight{kFrontRightChannel};
+  frc::Talon m_rearRight{kRearRightChannel};
   frc::MecanumDrive m_robotDrive{m_frontLeft, m_rearLeft, m_frontRight,
                                  m_rearRight};
 
