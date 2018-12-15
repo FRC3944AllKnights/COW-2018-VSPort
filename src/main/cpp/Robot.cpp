@@ -7,6 +7,8 @@
 
 #include <IterativeRobot.h>
 #include <Joystick.h>
+#include <Talon.h>
+#include <Servo.h>
 #include "Drive.h"
 
 /**
@@ -32,6 +34,8 @@ class Robot : public frc::IterativeRobot {
   static constexpr int kJoystickChannel = 0;
   Drive COWDrive;
   frc::Joystick m_stick{kJoystickChannel};
+  frc::Talon m_motor(0);
+  frc::Servo servo(2);
 };
 
 START_ROBOT_CLASS(Robot)
