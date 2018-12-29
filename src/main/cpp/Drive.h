@@ -1,3 +1,6 @@
+#ifndef DRIVE_H
+#define DRIVE_H
+
 #include <Drive/MecanumDrive.h>
 #include <Talon.h>
 
@@ -20,3 +23,5 @@ class Drive{
         frc::MecanumDrive m_robotDrive{m_frontLeft, m_rearLeft, m_frontRight,
                                  m_rearRight};
 };
+
+#endif

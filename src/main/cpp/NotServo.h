@@ -1,3 +1,6 @@
+#ifndef NOTSERVO_H
+#define NOTSERVO_H
+
 #include <Servo.h>
 
 class NotServo{
@@ -20,3 +23,4 @@ class NotServo{
 
 };
 
+#endif
