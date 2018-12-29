@@ -8,6 +8,7 @@
 #include <IterativeRobot.h>
 #include <Joystick.h>
 #include "Drive.h"
+#include "NotServo.h"
 
 /**
  * This is a demo program showing how to use Mecanum control with the
@@ -19,6 +20,7 @@ class Robot : public frc::IterativeRobot {
     // Invert the left side motors. You may need to change or remove this to
     // match your robot.
     COWDrive.init();
+    Servo.originPos();
   }
 
   void TeleopPeriodic() override {
@@ -26,12 +28,14 @@ class Robot : public frc::IterativeRobot {
      * movement, and Z axis for rotation.
      */
     COWDrive.mechanum(m_stick.GetX(), m_stick.GetY(), m_stick.GetZ());
+    Servo.servoRotate(m_stick.GetTrigger());
   }
 
  private:
  //this is where to change variables
   static constexpr int kJoystickChannel = 0;
   Drive COWDrive;
+  NotServo Servo; //names the class notServo - servo, also creates an instance of servo
   frc::Joystick m_stick{kJoystickChannel};
 };
 
