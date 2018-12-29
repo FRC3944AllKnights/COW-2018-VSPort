@@ -5,7 +5,7 @@ class Drive{
     public:
         Drive();
         void init();
-        void mechanum(double x, double y, double z);
+        void mechanum(double x, double y, double z, double throttle);
 
     private:
         static constexpr int kFrontLeftChannel = 0;
