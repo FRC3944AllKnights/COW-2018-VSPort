@@ -6,10 +6,10 @@ Lifter::Lifter(){
 
 void Lifter::manualUp(bool upButton){
     if(upButton && topSlow.Get() && topStop.Get()){
-        lifterMotor.Set(0.2);
+        lifterMotor.Set(-0.3);
     }
-    else if(topSlow.Get()){
-        lifterMotor.Set(0.1);
+    else if(!topStop.Get() && upButton){
+        lifterMotor.Set(-0.2);
     }
     else{
         lifterMotor.Set(0.0);
@@ -18,10 +18,10 @@ void Lifter::manualUp(bool upButton){
 
 void Lifter::manualDown(bool downButton){
     if(downButton && bottomSlow.Get() && bottomStop.Get()){
-        lifterMotor.Set(-0.2);
+        lifterMotor.Set(0.4);
     }
-    else if(bottomSlow.Get()){
-        lifterMotor.Set(-0.1);
+    else if(!bottomStop.Get() && downButton){
+        lifterMotor.Set(0.3);
     }
     else{
         lifterMotor.Set(0.0);

@@ -30,12 +30,20 @@ class Robot : public frc::IterativeRobot {
      */
     COWDrive.mechanum(m_stick.GetX(), m_stick.GetY(), m_stick.GetZ());
     Servo.servoRotate(m_stick.GetTrigger());
+
+    if (m_stick.GetRawButton(6)){
+      lifter.manualUp(m_stick.GetRawButton(6));
+    }
+    else{
+      lifter.manualDown(m_stick.GetRawButton(4));
+    }
   }
 
  private:
  //this is where to change variables
   static constexpr int kJoystickChannel = 0;
   Drive COWDrive;
+  Lifter lifter;
   NotServo Servo; //names the class notServo - servo, also creates an instance of servo
   frc::Joystick m_stick{kJoystickChannel};
 };
