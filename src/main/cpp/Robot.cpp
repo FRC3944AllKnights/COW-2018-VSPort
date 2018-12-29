@@ -10,6 +10,8 @@
 #include "Drive.h"
 #include "NotServo.h"
 #include "Pusher.h"
+#include "Lifter.h"
+
 /**
  * This is a demo program showing how to use Mecanum control with the
  * MecanumDrive class.
@@ -27,7 +29,7 @@ class Robot : public frc::IterativeRobot {
     /* Use the joystick X axis for lateral movement, Y axis for forward
      * movement, and Z axis for rotation.
      */
-    COWDrive.mechanum(m_stick.GetX(), m_stick.GetY(), m_stick.GetZ());
+    COWDrive.mechanum(m_stick.GetX(), m_stick.GetY(), m_stick.GetZ(), m_stick.GetThrottle());
     Servo.servoRotate(m_stick.GetTrigger());
     if (m_stick.GetRawButton(5)){
       PushMotor.manualPush(m_stick.GetRawButton(5));
