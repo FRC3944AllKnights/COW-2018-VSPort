@@ -9,6 +9,7 @@
 #include <Joystick.h>
 #include "Drive.h"
 #include "NotServo.h"
+#include "Lifter.h"
 
 /**
  * This is a demo program showing how to use Mecanum control with the
