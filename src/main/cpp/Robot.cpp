@@ -9,7 +9,7 @@
 #include <Joystick.h>
 #include "Drive.h"
 #include "NotServo.h"
-
+#include "Pusher.h"
 /**
  * This is a demo program showing how to use Mecanum control with the
  * MecanumDrive class.
@@ -29,6 +29,13 @@ class Robot : public frc::IterativeRobot {
      */
     COWDrive.mechanum(m_stick.GetX(), m_stick.GetY(), m_stick.GetZ());
     Servo.servoRotate(m_stick.GetTrigger());
+    if (m_stick.GetRawButton(5)){
+      PushMotor.manualPush(m_stick.GetRawButton(5));
+    }
+    else{
+      PushMotor.manualRetract(m_stick.GetRawButton(3));
+    }
+
   }
 
  private:
@@ -36,6 +43,7 @@ class Robot : public frc::IterativeRobot {
   static constexpr int kJoystickChannel = 0;
   Drive COWDrive;
   NotServo Servo; //names the class notServo - servo, also creates an instance of servo
+  Pusher PushMotor;
   frc::Joystick m_stick{kJoystickChannel};
 };
 
