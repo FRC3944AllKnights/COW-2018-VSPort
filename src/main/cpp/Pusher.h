@@ -13,7 +13,7 @@ class Pusher{
    
     private: //assigning motor of Pusher
         frc::Talon pusherMotor{6};
-        frc::DigitalInput limitExtend{4};
+        frc::DigitalInput limitExtend{0};
         frc::DigitalInput limitRetract{5};
 };
 
