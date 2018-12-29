@@ -6,10 +6,10 @@ NotServo::NotServo(){
     
 void NotServo::servoRotate(bool lifterLock){
     if(lifterLock){
-        servo.Set(0); // sets servo to 0 radians if true
+        servo.Set(0.4); // sets servo to 0 radians if true
     }
     else{
-       servo.Set(0.4); // sets servo to 170 degrees if false 
+       servo.Set(0); // sets servo to 170 degrees if false 
     }
 
 };
