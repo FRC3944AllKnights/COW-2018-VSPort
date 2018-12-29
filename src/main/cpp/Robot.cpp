@@ -9,6 +9,7 @@
 #include <Joystick.h>
 #include "Drive.h"
 #include "NotServo.h"
+#include "Pusher.h"
 #include "Lifter.h"
 
 /**
@@ -28,15 +29,22 @@ class Robot : public frc::IterativeRobot {
     /* Use the joystick X axis for lateral movement, Y axis for forward
      * movement, and Z axis for rotation.
      */
-    COWDrive.mechanum(m_stick.GetX(), m_stick.GetY(), m_stick.GetZ());
+    COWDrive.mechanum(m_stick.GetX(), m_stick.GetY(), m_stick.GetZ(), m_stick.GetThrottle());
     Servo.servoRotate(m_stick.GetTrigger());
-
     if (m_stick.GetRawButton(6)){
       lifter.manualUp(m_stick.GetRawButton(6));
     }
     else{
       lifter.manualDown(m_stick.GetRawButton(4));
     }
+//lifter manual control
+    if (m_stick.GetRawButton(5)){
+      PushMotor.manualPush(m_stick.GetRawButton(5));
+    }
+    else{
+      PushMotor.manualRetract(m_stick.GetRawButton(3));
+    }
+
   }
 
  private:
@@ -45,6 +53,7 @@ class Robot : public frc::IterativeRobot {
   Drive COWDrive;
   Lifter lifter;
   NotServo Servo; //names the class notServo - servo, also creates an instance of servo
+  Pusher PushMotor;
   frc::Joystick m_stick{kJoystickChannel};
 };
 
